@@ -12,6 +12,7 @@ root
 
 **Name:** Pranav Bokade  
 **Role:** Student
+
 **Status:** `LEARNING & BREAKING THINGS`
 
 > ℹ Passionate about offensive security, always hunting for vulnerabilities and learning new attack vectors.
@@ -40,16 +41,6 @@ Wireshark | sqlmap | ffuf | linpeas
 - Web Exploitation (XSS, SQLi, SSRF)
 - Binary Exploitation Basics
 - API Security Testing
-
----
-
-## // PROJECTS
-
-**Tool Name**
-```bash
-# A Python script for [purpose]
-# GitHub: github.com/username/project
-```
 
 ---
 
