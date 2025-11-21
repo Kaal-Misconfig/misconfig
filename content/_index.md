@@ -1,16 +1,17 @@
-# [ CYBERSECURITY ENTHUSIAST ]
+# [ ABOUT ME ]
 
 ```bash
-┌─[root@hackthebox]─[~/profile]
+┌─[root@misconfig]
 └──╼ $ whoami
+root
 ```
 
 ---
 
 ## // ABOUT ME
 
-**Name:** [Your Name]  
-**Role:** Security Researcher | CTF Player  
+**Name:** Pranav Bokade  
+**Role:** Student
 **Status:** `LEARNING & BREAKING THINGS`
 
 > ℹ Passionate about offensive security, always hunting for vulnerabilities and learning new attack vectors.
@@ -31,23 +32,6 @@ Python | Bash | JavaScript | SQL
 Burp Suite | nmap | Metasploit | gobuster
 Wireshark | sqlmap | ffuf | linpeas
 ```
-
----
-
-## // HACKTHEBOX PROFILE
-
-| Metric | Value |
-|--------|-------|
-| **Rank** | [Your Rank] |
-| **Points** | [Your Points] |
-| **Machines Owned** | [X] |
-| **Challenges** | [X] |
-
-**Favorite Boxes:**
-- ▸ [Box Name] - [Difficulty]
-- ▸ [Box Name] - [Difficulty]
-- ▸ [Box Name] - [Difficulty]
-
 ---
 
 ## // CURRENTLY LEARNING
@@ -67,20 +51,13 @@ Wireshark | sqlmap | ffuf | linpeas
 # GitHub: github.com/username/project
 ```
 
-**CTF Writeups**
-- 📝 [Machine Name] - HackTheBox
-- 📝 [Challenge Name] - TryHackMe
-- 📝 [Box Name] - Custom Writeup
-
 ---
 
 ## // CONNECT
 
 ```bash
-[+] HackTheBox: htb.com/profile/username
-[+] GitHub: github.com/username
-[+] Twitter: @username
-[+] Discord: username#0000
+[+] GitHub: github.com/kaal-misconfig
+[+] Twitter: @kaal-misconfig
 ```
 
 ---
