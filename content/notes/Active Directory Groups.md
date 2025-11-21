@@ -13,7 +13,7 @@ categories = ["Notes"]
 - **OUs**: Used to organize and manage users, computers and groups. You can apply policies or delegate control without giving full admin rights.
 
 
-# Types of <span style="color:rgb(68, 255, 0)">Groups</span> 
+## Types of <span style="color:rgb(68, 255, 0)">Groups</span> 
 
 ##### Groups in AD have two fundamental characteristics: <span style="color:rgb(69, 236, 9)">type</span> and <span style="color:rgb(69, 236, 9)">scope</span>. the group type defines the groups's purpose, while the group scope shows how the group can be used within the domain or forest.
 
