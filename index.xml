@@ -137,7 +137,7 @@ cursor: pointer;
 &lt;div class="hex-line"&gt;&gt; TRACING IP... [ LOCALHOST ]&lt;/div&gt;
 &lt;div class="hex-line"&gt;&gt; MEMORY_DUMP: INITIATED...&lt;/div&gt;
 &lt;/div&gt;
-&lt;a href="https://Kaal-Misconfig.github.io/misconfig/" class="abort-btn"&gt;
+&lt;a href="https://Kaal-Misconfig.github.io/misconfig/misconfig" class="abort-btn"&gt;
 [ ABORT_MISSION ]
 &lt;/a&gt;
 &lt;/div&gt;
