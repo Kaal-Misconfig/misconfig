@@ -40,6 +40,7 @@ Wireshark | sqlmap | ffuf | linpeas
 - Web Exploitation (XSS, SQLi, SSRF)
 - Binary Exploitation Basics
 - API Security Testing
+- RUST
 
 ---
 
