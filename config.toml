@@ -39,17 +39,17 @@ enableRobotsTXT = true
 
   [[menu.main]]
     name = "Posts"
-    url = "/posts/"
+    url = "posts"
     weight = 1
 
   [[menu.main]]
     name = "Writeups"
-    url = "/writeups/"
+    url = "writeups"
     weight = 2
 
   [[menu.main]]
     name = "Notes"
-    url = "/notes/"
+    url = "notes"
     weight = 3
 
   [[menu.main]]
@@ -59,10 +59,10 @@ enableRobotsTXT = true
 
   [[menu.main]]
     name = "Tags"
-    url = "/tags/"
+    url = "tags"
     weight = 5
 
   [[menu.main]]
     name = "Categories"
-    url = "/categories/"
+    url = "categories"
     weight = 6
