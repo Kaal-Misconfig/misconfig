@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://Kaal-Misconfig.github.io/misconfig/sitemap.xml
