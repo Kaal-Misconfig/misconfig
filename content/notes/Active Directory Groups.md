@@ -83,19 +83,19 @@ Domain Guests                                Global
 - A Universal Group can only be converted to a Global Group if it does NOT contain any other Universal Groups as Members
 
 
-# <span style="color:rgb(255, 255, 0)">Built-In Vs Custom Groups</span> 
+## <span style="color:rgb(255, 255, 0)">Built-In Vs Custom Groups</span> 
 
 ##### When a new domain is created in AD, several built-in security groups are automatically made. These groups usually have a Domain Local scope and are used for specific admin tasks. You can't nest groups inside these built-in ones, only user accounts can be added.
 ##### Organizations usually create their own custom groups and new services like Microsoft Exchange can also automatically add new privileged groups to AD. If these aren't reviewed and managed properly, attackers can use them to gain high-level access.
 
 
 
-# <span style="color:rgb(126, 226, 44)">Nested</span> Group Membership
+## <span style="color:rgb(126, 226, 44)">Nested</span> Group Membership
 
 ##### In AD, Groups can be nested, So if User A is in Group 1, and Group 1 is in Group 2, User A gets the permissions of Group 2, even if not directly added to it. Nested groups can unintentionally give away powerful access. **Use BloodHound to visualize and detect these hidden paths**, it’s crucial for both **pentesters** and **sysadmins**.
 
 
-# <span style="color:rgb(255, 64, 0)">Important</span> Group <span style="color:rgb(126, 226, 44)">Attributes</span> 
+## <span style="color:rgb(255, 64, 0)">Important</span> Group <span style="color:rgb(126, 226, 44)">Attributes</span> 
 
 1. **cn**: Common-Name is the name of the group in AD DS.
 2. **member**: Which user, group and contact objects are member of the group.
