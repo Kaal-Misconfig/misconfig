@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>//localhost:1313/posts/lateral-movement/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/penetration-testing-overview/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/pentest-process/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/poc/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/post-engagement/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/post-exploitation/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/pre-engagement/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/process-layout/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/vulnerability-assessment/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/words-of-wisdom/</loc>
+  </url><url>
+    <loc>//localhost:1313/tools/404/</loc>
+  </url><url>
+    <loc>//localhost:1313/categories/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/exploitation/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/information-gathering/</loc>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+  </url>
+</urlset>

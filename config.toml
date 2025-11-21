@@ -1,0 +1,68 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "M1$C0NF1G"
+theme = "PaperMod"
+pagerSize = 10
+
+enableRobotsTXT = true
+
+[params]
+  env = "production"
+  defaultTheme = "dark"
+  disableThemeToggle = true
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  showtoc = true
+  tocopen = false
+  hideMeta = false
+  author = "Kaal"
+  ShowPostNavLinks = true
+
+[params.homeInfoParams]
+  Title = "Red Team Notes"
+  Content = ""
+
+[params.assets]
+  css = ["css/extended/htb.css"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 4
+    ordered = false
+
+[menu]
+
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Writeups"
+    url = "/writeups/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Notes"
+    url = "/notes/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Tools"
+    url = "/tools/"
+    weight = 4
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 5
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 6

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 // SYSTEM FAILURE</title>
+    <style>
+        /* --- RESET & CORE SETUP --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden; /* No scrolling allowed during breach */
+        }
+
+        /* --- FULLSCREEN CONTAINER --- */
+        .sys-breach-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        /* --- CRT SCANLINE OVERLAY --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            color: #ff003c; /* The Red Team Red */
+        }
+
+        /* --- TEXT ELEMENTS --- */
+        .warning-box {
+            border: 1px solid #ff003c;
+            padding: 5px 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
+            margin-bottom: 20px;
+            background: rgba(20, 0, 0, 0.8);
+        }
+        
+        .id-tag {
+            opacity: 0.7;
+            margin-left: 15px;
+            font-size: 0.7rem;
+            color: #fff;
+        }
+
+        .mega-error {
+            font-size: 8rem;
+            margin: 0;
+            line-height: 1;
+            font-weight: 900;
+            text-shadow: 4px 4px 0px rgba(255, 0, 60, 0.2);
+            letter-spacing: -5px;
+        }
+
+        .status-text {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px #ff003c;
+            text-transform: uppercase;
+        }
+
+        /* --- FAKE TERMINAL DUMP --- */
+        .hex-dump {
+            text-align: left;
+            font-size: 0.85rem;
+            color: rgba(255, 0, 60, 0.8);
+            border-left: 2px solid #ff003c;
+            padding-left: 15px;
+            margin: 20px auto;
+            width: fit-content;
+            background: rgba(0,0,0,0.5);
+        }
+        .hex-line { margin-bottom: 4px; }
+
+        /* --- BUTTON --- */
+        .abort-btn {
+            display: inline-block;
+            margin-top: 30px;
+            color: #000;
+            background: #ff003c;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+        .abort-btn:hover {
+            background: #fff;
+            color: #ff003c;
+            box-shadow: 0 0 20px #ff003c;
+            cursor: pointer;
+        }
+
+        /* --- ANIMATION UTILS --- */
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div class="sys-breach-container">
+        <div class="scanlines"></div>
+        
+        <div class="content-wrapper">
+            <div class="warning-box">
+                <span class="blink">⚠ CRITICAL_FAILURE</span>
+                <span class="id-tag">USER: KAAL_MISCONFIG</span>
+            </div>
+
+            <h1 class="mega-error" data-value="404">000</h1>
+            
+            <div class="status-text">DEAD_END_DETECTED</div>
+
+            <div class="hex-dump">
+                <div class="hex-line">> KERNEL_PANIC: VFS unable to mount root</div>
+                <div class="hex-line">> PATH_LOOKUP: FAILED (0x000004)</div>
+                <div class="hex-line">> TRACING IP... [ LOCALHOST ]</div>
+                <div class="hex-line">> MEMORY_DUMP: INITIATED...</div>
+            </div>
+
+            <a href="/" class="abort-btn">
+                [ ABORT_MISSION ]
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Decryption Effect
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+        document.addEventListener("DOMContentLoaded", () => {
+            const h1 = document.querySelector(".mega-error");
+            const originalText = h1.dataset.value;
+            let iteration = 0;
+            let interval = null;
+
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                h1.innerText = originalText
+                    .split("")
+                    .map((letter, index) => {
+                        if(index < iteration) {
+                            return originalText[index];
+                        }
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
+
+                if(iteration >= originalText.length){ 
+                    clearInterval(interval);
+                }
+                
+                iteration += 1/5; 
+            }, 40);
+        });
+    </script>
+</body>
+</html>

