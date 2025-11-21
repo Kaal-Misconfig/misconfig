@@ -169,4 +169,4 @@ iteration += 1/5;
 });
 &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;</description></item></channel></rss>
+&lt;/html&gt;</description></item><item><title>Database Enumeration</title><link>https://Kaal-Misconfig.github.io/misconfig/posts/database-enumeration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Kaal-Misconfig.github.io/misconfig/posts/database-enumeration/</guid><description>SQLMap Data Exfiltration and Basic DB Data Enumeration with SQLMap</description></item></channel></rss>
