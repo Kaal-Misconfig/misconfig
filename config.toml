@@ -53,7 +53,6 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
-    title = NOTES
     name = "Notes"
     url = "notes"
     weight = 4
