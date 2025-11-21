@@ -1,3 +1,7 @@
++++
+title = "Database Enumeration"
+summary = "SQLMap Data Exfiltration and Basic DB Data Enumeration with SQLMap"
++++
 -> Enumeration represents the central part of an SQL injection attack, which is done right after the successful detection and confirmation of exploitability of the targeted SQLi vulnerability. It consists of lookup and retrieval (i.e., exfiltration) of all the available information from the vulnerable database.
 
 ## SQLMap Data Exfiltration
