@@ -24,8 +24,8 @@ enableRobotsTXT = true
   ShowPostNavLinks = true
 
 [params.homeInfoParams]
-  Title = "ABOUT ME"
-  Content = "Offensive Security Notes and Writeups"
+  Title = "RECENT"
+  Content = ""
 
 [params.assets]
   css = ["css/extended/htb.css"]
