@@ -12,7 +12,6 @@ root
 
 **Name:** Pranav Bokade  
 **Role:** Student
-
 **Status:** `LEARNING & BREAKING THINGS`
 
 > ℹ Passionate about offensive security, always hunting for vulnerabilities and learning new attack vectors.
